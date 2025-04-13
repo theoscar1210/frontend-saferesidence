@@ -1,10 +1,12 @@
 import React from "react";
-import IngresoSalidaForm from "./components/IngresoSalidaForm";
+import "./App.css";
+import RegistroSalida from "./components/login"; // Importamos el componente
 
 function App() {
   return (
     <div className="App">
-      <IngresoSalidaForm />
+      <h1>SafeResidence - Login</h1>
+      <RegistroSalida />
     </div>
   );
 }
