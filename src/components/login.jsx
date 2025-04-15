@@ -1,72 +1,52 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío del formulario
-    console.log("Usuario:", username);
-    console.log("Contraseña:", password);
+
+    // Simulación de validación
+    if (usuario === "admin" && password === "1234") {
+      navigate("/registro-ingreso"); // Redirige al formulario de ingreso
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px" }}>
+    <div style={{ maxWidth: "400px", margin: "0 auto" }}>
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
-          <label
-            htmlFor="username"
-            style={{ display: "block", marginBottom: "5px" }}
-          >
-            Usuario:
-          </label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-            required
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label
-            htmlFor="password"
-            style={{
-              display: "block",
-              marginBottom: "5px",
-              borderRadius: "5px",
-            }}
-          >
-            Contraseña:
-          </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-            required
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Usuario"
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+        />
         <button
           type="submit"
           style={{
             padding: "10px 20px",
-            backgroundColor: "#4682b4",
+            backgroundColor: "#007BFF",
             color: "#fff",
             border: "none",
-            cursor: "pointer",
             borderRadius: "5px",
-            hover: {
-              backgroundColor: "#4169e1",
-            },
-            transition: "background-color 0.3s ease",
+            cursor: "pointer",
           }}
         >
-          Iniciar Sesión
+          Entrar
         </button>
       </form>
     </div>
